@@ -36,8 +36,6 @@ class _MainPageState extends State<MainPage> {
         title: Text(widget.title),
       ),
       body: Background(
-        imageUrl:
-            "http://bing.com/th?id=OHR.ChampsVEDay_EN-US3938798120_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp",
         child: Center(
           child: Wrap(
             spacing: 8.0,
@@ -81,7 +79,7 @@ class _MainPageState extends State<MainPage> {
             ),
           );
         },
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }
