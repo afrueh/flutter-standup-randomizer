@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:standup_randomizer/pages/pages.dart';
 import 'package:standup_randomizer/widgets/widgets.dart';
 
+import 'widgets/circular_list.dart';
+
 void main() => runApp(MyApp());
 
 const double _fabDimension = 60.0;
@@ -37,20 +39,13 @@ class _MainPageState extends State<MainPage> {
       ),
       body: Background(
         child: Center(
-          child: Wrap(
-            spacing: 8.0,
-            runSpacing: 8.0,
-            runAlignment: WrapAlignment.spaceAround,
-            children: <Widget>[
-              TeamMember(),
-              TeamMember(),
-              TeamMember(),
-              TeamMember(),
-              TeamMember(),
-              TeamMember(),
-              TeamMember(),
-              TeamMember(),
-            ],
+          child: CircularList(
+            centerWidget: TeamMember(name: 'Scrum master'),
+            children: List.generate(8, (index) {
+              return TeamMember(
+                name: 'Person $index',
+              );
+            }),
           ),
         ),
       ),
