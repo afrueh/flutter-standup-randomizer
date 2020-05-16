@@ -15,11 +15,11 @@ jobs:
   verify:
     name: Verify
     runs-on: ubuntu-latest
-    container: cirrusci/flutter:latest
     steps:
     - uses: actions/checkout@v1
-    
-    # Setup the flutter environment.
+    - uses: actions/setup-java@v1
+      with:
+        java-version: '12.x'
     - uses: subosito/flutter-action@v1
       with:
         channel: 'beta' # 'dev', 'alpha', default to: 'stable'
