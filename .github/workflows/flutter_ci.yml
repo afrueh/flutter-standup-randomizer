@@ -17,10 +17,18 @@ jobs:
     runs-on: ubuntu-latest
     container: cirrusci/flutter:latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v1
+    
+    # Setup the flutter environment.
+    - uses: subosito/flutter-action@v1
+      with:
+        channel: 'beta' # 'dev', 'alpha', default to: 'stable'
 
     - name: Analyze
       run: flutter analyze --no-congratulate || exit $?
+
+    - name: Formatter
+      run: flutter format --set-exit-if-changed .
 
     - name: Test
       run: 
