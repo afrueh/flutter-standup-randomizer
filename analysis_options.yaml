@@ -1,1 +1,6 @@
 analyzer:
+  errors:
+    # allow for asset_does_not_exist
+    unrecognized_error_code: ignore
+    # ignore this in pubspec.yaml
+    asset_does_not_exist: ignore
