@@ -2,7 +2,6 @@
 
 Helps you with your daily Scrum Stand-Up by randomizing the order, provide a time-box and more
 
-
 ## Development
 
 Follow the guidelines in the flutter documentation to enable flutter to run Web Applications:
@@ -19,12 +18,13 @@ Flickr is used to fetch an interesting picture as background. For this feature t
 ### Run
 
 Run the Application:
-```
+
+```bash
     flutter run -d chrome
 ```
 
 ### Deploy
 
-```
+```bash
     flutter build web
 ```

@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class TeamMember extends StatefulWidget {
   final double width;
   final double height;
+  final String name;
 
-  const TeamMember({Key key, this.width = 200, this.height = 200})
+  const TeamMember({Key key, this.width = 200, this.height = 200, this.name})
       : super(key: key);
 
   @override
@@ -43,7 +44,7 @@ class _TeamMemberState extends State<TeamMember> {
                 child: Column(
                   children: <Widget>[
                     Text(
-                      'John Doe',
+                      widget.name ?? 'John Doe',
                       style: Theme.of(context).textTheme.headline5,
                     ),
                     Image.asset(

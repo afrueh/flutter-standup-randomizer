@@ -1,7 +1,6 @@
 name: standup_randomizer
 description: Helps you with your daily Scrum Stand-Up by randomizing the order, provide a time-box and more
-
-version: 1.0.0+1
+version: 1.0.0+2
 
 environment:
   sdk: ">=2.5.2 <3.0.0"
@@ -17,7 +16,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
 
 flutter:
   uses-material-design: true
