@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:standup_randomizer/pages/pages.dart';
 import 'package:standup_randomizer/widgets/widgets.dart';
 
-import 'widgets/circular_list.dart';
-
 void main() => runApp(MyApp());
 
 const double _fabDimension = 60.0;
