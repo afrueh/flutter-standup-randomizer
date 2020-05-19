@@ -48,7 +48,7 @@ class _TeamMemberState extends State<TeamMember> {
                           image: DecorationImage(
                               image:
                                   AssetImage('assets/images/placeholder.png'),
-                              fit: BoxFit.cover),
+                              fit: BoxFit.fitHeight),
                         ),
                       ),
                     ),

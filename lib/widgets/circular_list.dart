@@ -16,10 +16,16 @@ class CircularList extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final outerCircleDiameter = min(size.width, size.height);
     final outerRadius = outerCircleDiameter / 2.0;
-    final centerWidgetDiameter = outerRadius * 0.45;
-    final betweenRadius = outerRadius * 0.65;
+    final betweenRadius = outerRadius * 0.57;
+
+    final maxChildDiameter = 230.0;
+    final centerWidgetDiameter = min(outerRadius * 0.45, maxChildDiameter);
+
+    final minRenderChildNbr = max(children.length, 6);
+    final childWidgetSizeFactor =
+        minRenderChildNbr * pow(0.55, sqrt(minRenderChildNbr * 2.2));
     final double childrenDiameter =
-        2 * pi * betweenRadius / children.length - 50;
+        min(betweenRadius * childWidgetSizeFactor, maxChildDiameter);
 
     final topItemAngle = 0.0;
     final origin = Offset(0, -outerCircleDiameter * 0.04);
