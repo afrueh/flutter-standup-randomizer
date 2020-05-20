@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class TeamMember extends StatefulWidget {
+class TeamMemberWidget extends StatefulWidget {
   final String name;
 
-  const TeamMember({Key key, this.name}) : super(key: key);
+  const TeamMemberWidget({Key key, this.name}) : super(key: key);
 
   @override
-  _TeamMemberState createState() => _TeamMemberState();
+  _TeamMemberWidgetState createState() => _TeamMemberWidgetState();
 }
 
-class _TeamMemberState extends State<TeamMember> {
+class _TeamMemberWidgetState extends State<TeamMemberWidget> {
   bool inOffice = true;
 
   @override

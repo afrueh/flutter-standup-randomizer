@@ -57,7 +57,7 @@ class _BackgroundState extends State<Background> {
         Align(
           alignment: Alignment.bottomLeft,
           child: Container(
-            constraints: BoxConstraints.loose(Size(300, 80)),
+            constraints: BoxConstraints.loose(Size(300, 70)),
             margin: EdgeInsets.all(15),
             padding: EdgeInsets.all(10),
             color: Colors.black.withAlpha(150),
@@ -67,10 +67,12 @@ class _BackgroundState extends State<Background> {
                 Text(
                   photoOfTheDay.title,
                   style: Theme.of(context).primaryTextTheme.headline5,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 Text(
                   photoOfTheDay.owner,
                   style: Theme.of(context).primaryTextTheme.subtitle2,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ],
             ),
