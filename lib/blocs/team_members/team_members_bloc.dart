@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:standup_randomizer/blocs/team_members_event.dart';
-import 'package:standup_randomizer/blocs/team_members_state.dart';
+import 'package:standup_randomizer/blocs/blocs.dart';
 import 'package:standup_randomizer/models/models.dart';
 
 class TeamMembersBloc extends Bloc<TeamMembersEvent, TeamMembersState> {
