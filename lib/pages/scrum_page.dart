@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:standup_randomizer/blocs/blocs.dart';
@@ -11,7 +13,7 @@ class ScrumPage extends StatelessWidget {
         builder: ((context, state) {
           if (state is TeamMembersStateLoaded) {
             return CircularList(
-              centerWidget: TeamMemberWidget(name: 'Scrum master'),
+              centerWidget: ScrumCenterWidget(),
               children: List.generate(state.teamMembers.length, (index) {
                 return TeamMemberWidget(
                   name: state.teamMembers[index].name,
@@ -23,6 +25,29 @@ class ScrumPage extends StatelessWidget {
           }
         }),
       )),
+    );
+  }
+}
+
+class ScrumCenterWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final minSize = min(size.width, size.height);
+
+    return Container(
+      width: minSize * 0.2,
+      decoration: new BoxDecoration(
+        color: Theme.of(context).colorScheme.primary,
+        shape: BoxShape.circle,
+      ),
+      child: Center(
+        child: Icon(
+          Icons.rotate_right,
+          color: Theme.of(context).colorScheme.onSecondary,
+          size: minSize * 0.15,
+        ),
+      ),
     );
   }
 }
