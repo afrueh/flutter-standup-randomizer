@@ -3,9 +3,7 @@ import 'package:standup_randomizer/blocs/blocs.dart';
 import 'package:standup_randomizer/models/models.dart';
 
 class TeamMembersBloc extends Bloc<TeamMembersEvent, TeamMembersState> {
-  TeamMembersBloc() {
-    add(TeamMembersEventLoadData());
-  }
+  TeamMembersBloc() {}
 
   @override
   TeamMembersState get initialState => TeamMembersStateNotLoaded();
@@ -28,7 +26,6 @@ class TeamMembersBloc extends Bloc<TeamMembersEvent, TeamMembersState> {
       TeamMember(name: 'Person 7'),
       TeamMember(name: 'Person 8'),
     ];
-    teamMembersList.shuffle();
     return teamMembersList;
   }
 }

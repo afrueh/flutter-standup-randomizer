@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:standup_randomizer/models/models.dart';
 
-void main() {
+main() {
   group('TeamMember', () {
     test('decodes correctly from JSON', () {
       final jsonString = '{"name": "John Doe"}';
