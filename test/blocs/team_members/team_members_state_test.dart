@@ -21,14 +21,15 @@ main() {
     test('equality check works', () {
       final teamMember1 = TeamMember(name: 'John Doe');
       final teamMember2 = TeamMember(name: 'Jane Doe');
-      final teamMemberOriginal =
+      final teamMemberStateOriginal =
           TeamMembersStateLoaded(teamMembers: [teamMember1]);
-      final teamMemberSame = TeamMembersStateLoaded(teamMembers: [teamMember1]);
-      final teamMemberOther =
-          TeamMembersStateLoaded(teamMembers: [teamMember2]);
+      final teamMemberStateSame =
+          TeamMembersStateLoaded(teamMembers: [teamMember1]);
+      final teamMemberStateOther =
+          TeamMembersStateLoaded(teamMembers: [teamMember1, teamMember2]);
 
-      expect(teamMemberOriginal == teamMemberSame, isTrue);
-      expect(teamMemberOriginal == teamMemberOther, isFalse);
+      expect(teamMemberStateOriginal == teamMemberStateSame, isTrue);
+      expect(teamMemberStateOriginal == teamMemberStateOther, isFalse);
     });
 
     test('toString prints expected result', () {

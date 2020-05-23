@@ -3,6 +3,7 @@ import 'package:standup_randomizer/blocs/blocs.dart';
 import 'package:standup_randomizer/models/models.dart';
 
 class TeamMembersBloc extends Bloc<TeamMembersEvent, TeamMembersState> {
+  List<TeamMember> _teamMembers = [];
   TeamMembersBloc() {}
 
   @override
@@ -11,21 +12,10 @@ class TeamMembersBloc extends Bloc<TeamMembersEvent, TeamMembersState> {
   @override
   Stream<TeamMembersState> mapEventToState(TeamMembersEvent event) async* {
     if (event is TeamMembersEventLoadData) {
-      yield TeamMembersStateLoaded(teamMembers: _loadTeamMembers());
+      yield TeamMembersStateLoaded(teamMembers: _teamMembers);
+    } else if (event is TeamMembersEventAddMember) {
+      _teamMembers.add(TeamMember(name: event.name));
+      yield TeamMembersStateLoaded(teamMembers: _teamMembers);
     }
-  }
-
-  List<TeamMember> _loadTeamMembers() {
-    List<TeamMember> teamMembersList = [
-      TeamMember(name: 'Person 1'),
-      TeamMember(name: 'Person 2'),
-      TeamMember(name: 'Person 3'),
-      TeamMember(name: 'Person 4'),
-      TeamMember(name: 'Person 5'),
-      TeamMember(name: 'Person 6'),
-      TeamMember(name: 'Person 7'),
-      TeamMember(name: 'Person 8'),
-    ];
-    return teamMembersList;
   }
 }

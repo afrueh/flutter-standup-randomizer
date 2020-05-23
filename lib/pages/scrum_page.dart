@@ -13,7 +13,9 @@ class ScrumPage extends StatelessWidget {
         builder: ((context, state) {
           if (state is TeamMembersStateLoaded) {
             return CircularList(
-              centerWidget: ScrumCenterWidget(),
+              centerWidget: state.teamMembers.length > 0
+                  ? ScrumCenterWidget()
+                  : ScrumCenterEmptyWidget(),
               children: List.generate(state.teamMembers.length, (index) {
                 return TeamMemberWidget(
                   name: state.teamMembers[index].name,
@@ -46,6 +48,22 @@ class ScrumCenterWidget extends StatelessWidget {
           Icons.rotate_right,
           color: Theme.of(context).colorScheme.onSecondary,
           size: minSize * 0.15,
+        ),
+      ),
+    );
+  }
+}
+
+class ScrumCenterEmptyWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Theme.of(context).colorScheme.primary,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          'Please add team members',
+          style: Theme.of(context).textTheme.headline5,
         ),
       ),
     );

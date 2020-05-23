@@ -9,10 +9,12 @@ abstract class TeamMembersState extends Equatable {
 
 class TeamMembersStateNotLoaded extends TeamMembersState {}
 
+// TODO: Rename this to a better state name
 class TeamMembersStateLoaded extends TeamMembersState {
   final List<TeamMember> teamMembers;
 
-  TeamMembersStateLoaded({@required this.teamMembers});
+  TeamMembersStateLoaded({@required teamMembers})
+      : teamMembers = List<TeamMember>.from(teamMembers);
 
   @override
   bool get stringify => true;
