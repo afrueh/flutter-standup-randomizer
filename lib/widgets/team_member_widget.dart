@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 
-class TeamMember extends StatefulWidget {
-  final double width;
-  final double height;
+class TeamMemberWidget extends StatefulWidget {
   final String name;
 
-  const TeamMember({Key key, this.width = 200, this.height = 200, this.name})
-      : super(key: key);
+  const TeamMemberWidget({Key key, this.name}) : super(key: key);
 
   @override
-  _TeamMemberState createState() => _TeamMemberState();
+  _TeamMemberWidgetState createState() => _TeamMemberWidgetState();
 }
 
-class _TeamMemberState extends State<TeamMember> {
+class _TeamMemberWidgetState extends State<TeamMemberWidget> {
   bool inOffice = true;
 
   @override
@@ -35,8 +32,6 @@ class _TeamMemberState extends State<TeamMember> {
           });
         },
         child: Container(
-          width: widget.width,
-          height: widget.height,
           child: Stack(
             children: <Widget>[
               Container(
@@ -47,18 +42,21 @@ class _TeamMemberState extends State<TeamMember> {
                       widget.name ?? 'John Doe',
                       style: Theme.of(context).textTheme.headline5,
                     ),
-                    Image.asset(
-                      'assets/images/placeholder.png',
-                      width: widget.width * 0.8,
-                      fit: BoxFit.cover,
-                    )
+                    Expanded(
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                              image:
+                                  AssetImage('assets/images/placeholder.png'),
+                              fit: BoxFit.fitHeight),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
               if (!inOffice)
                 Container(
-                  width: widget.width,
-                  height: widget.height,
                   alignment: Alignment.center,
                   child: Text(
                     "Not Available",
