@@ -40,7 +40,8 @@ class _TeamMemberWidgetState extends State<TeamMemberWidget> {
                   children: <Widget>[
                     Text(
                       widget.name ?? 'John Doe',
-                      style: Theme.of(context).textTheme.headline5,
+                      style:
+                          Theme.of(context).textTheme.headline6, //.headline5,
                     ),
                     Expanded(
                       child: Container(
@@ -60,7 +61,9 @@ class _TeamMemberWidgetState extends State<TeamMemberWidget> {
                   alignment: Alignment.center,
                   child: Text(
                     "Not Available",
-                    style: Theme.of(context).primaryTextTheme.headline6,
+                    style: Theme.of(context)
+                        .primaryTextTheme
+                        .headline6, //.headline6,
                   ),
                 )
             ],

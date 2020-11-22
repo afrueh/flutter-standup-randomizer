@@ -22,7 +22,9 @@ class AddMember extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text('WIP', style: Theme.of(context).textTheme.headline2),
+                Text('WIP',
+                    style:
+                        Theme.of(context).textTheme.headline6), //.headline2),
                 const SizedBox(height: 10),
                 Text(
                   """Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus auctor dapibus nisi nec venenatis. Nulla tempor lectus non turpis ultricies, at euismod dolor tempus. Nulla facilisi. Suspendisse potenti. Nam cursus feugiat felis, varius vestibulum tortor pellentesque et. Fusce placerat ligula ac augue aliquam pulvinar. Ut interdum, diam quis consectetur maximus, ante nisi semper justo, sit amet convallis est tortor nec turpis. Nullam commodo tincidunt commodo. Nunc auctor at magna in venenatis. Sed ac ante in diam hendrerit molestie ut non enim.
@@ -34,7 +36,7 @@ class AddMember extends StatelessWidget {
                   Vivamus tellus magna, lobortis eget lectus et, fringilla ultricies arcu. Donec lectus orci, imperdiet sit amet mollis non, accumsan eget orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin auctor egestas lacus eget venenatis. Sed nec ex urna. Suspendisse nec mi at massa rhoncus pharetra ut non lacus. Sed non velit tincidunt, feugiat sem non, porta purus. Quisque pellentesque leo sit amet ex tincidunt ultrices.
 
                   Proin rutrum massa quis arcu lacinia, eu volutpat felis finibus. Fusce blandit dictum nisl, quis tempus velit commodo iaculis. Sed blandit leo vel hendrerit ullamcorper. Aenean accumsan pretium consequat. Etiam finibus leo eleifend orci consequat, sit amet congue ligula posuere. Suspendisse quis enim ut nulla tristique rutrum non id sem. Aliquam posuere condimentum elit nec sagittis. Nam consectetur molestie dignissim. Pellentesque vulputate ornare orci. """,
-                  style: Theme.of(context).textTheme.bodyText1,
+                  style: Theme.of(context).textTheme.bodyText2, //.bodyText1,
                 ),
               ],
             ),

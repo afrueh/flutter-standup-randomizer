@@ -66,13 +66,17 @@ class _BackgroundState extends State<Background> {
               children: <Widget>[
                 Text(
                   photoOfTheDay.title,
-                  style: Theme.of(context).primaryTextTheme.headline5,
+                  style: Theme.of(context)
+                      .primaryTextTheme
+                      .headline6, //.headline5,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
                 ),
                 Text(
                   photoOfTheDay.owner,
-                  style: Theme.of(context).primaryTextTheme.subtitle2,
+                  style: Theme.of(context)
+                      .primaryTextTheme
+                      .subtitle2, //.subtitle2,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
                 ),
@@ -100,7 +104,8 @@ class _BackgroundState extends State<Background> {
               ),
               Text(
                 'Failed to load background image',
-                style: Theme.of(context).textTheme.headline5.apply(
+                style: Theme.of(context).textTheme.headline6.apply(
+                      //.headline5.apply(
                       color: Theme.of(context).errorColor,
                     ),
               ),
