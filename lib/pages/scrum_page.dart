@@ -9,25 +9,32 @@ class ScrumPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Background(
-      child: Center(child: BlocBuilder<TeamMembersBloc, TeamMembersState>(
-        builder: ((context, state) {
-          if (state is TeamMembersStateLoaded) {
-            return CircularList(
-              centerWidget: state.teamMembers.length > 0
-                  ? ScrumCenterWidget()
-                  : ScrumCenterEmptyWidget(),
-              children: List.generate(state.teamMembers.length, (index) {
-                return TeamMemberWidget(
-                  name: state.teamMembers[index].name,
-                  isActive: index == 0,
-                );
+      child: Center(
+        child: BlocBuilder<DailyBloc, DailyState>(
+          builder: ((context, dailyState) {
+            return BlocBuilder<TeamMembersBloc, TeamMembersState>(
+              builder: ((context, teamMemberState) {
+                if (teamMemberState is TeamMembersStateLoaded) {
+                  return CircularList(
+                    centerWidget: teamMemberState.teamMembers.length > 0
+                        ? ScrumCenterWidget()
+                        : ScrumCenterEmptyWidget(),
+                    children: List.generate(teamMemberState.teamMembers.length,
+                        (index) {
+                      return TeamMemberWidget(
+                        name: teamMemberState.teamMembers[index].name,
+                        isActive: dailyState is DailyStateStarted && index == 0,
+                      );
+                    }),
+                  );
+                } else {
+                  return Text('Loading');
+                }
               }),
             );
-          } else {
-            return Text('Loading');
-          }
-        }),
-      )),
+          }),
+        ),
+      ),
     );
   }
 }
