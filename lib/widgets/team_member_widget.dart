@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 
 class TeamMemberWidget extends StatefulWidget {
   final String name;
+  final bool isActive;
 
-  const TeamMemberWidget({Key key, this.name}) : super(key: key);
+  const TeamMemberWidget({
+    Key key,
+    @required this.name,
+    this.isActive = false,
+  }) : super(key: key);
 
   @override
   _TeamMemberWidgetState createState() => _TeamMemberWidgetState();
@@ -11,6 +16,16 @@ class TeamMemberWidget extends StatefulWidget {
 
 class _TeamMemberWidgetState extends State<TeamMemberWidget> {
   bool inOffice = true;
+
+  Color _getCardColor(BuildContext context) {
+    if (!inOffice) {
+      return Theme.of(context).disabledColor;
+    } else if (widget.isActive) {
+      return Theme.of(context).primaryColor;
+    } else {
+      return Theme.of(context).cardTheme.color;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +37,7 @@ class _TeamMemberWidgetState extends State<TeamMemberWidget> {
           30,
         ),
       ),
-      color: inOffice
-          ? Theme.of(context).cardTheme.color
-          : Theme.of(context).disabledColor,
+      color: _getCardColor(context),
       child: InkWell(
         onTap: () {
           setState(() {

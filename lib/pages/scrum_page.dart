@@ -19,6 +19,7 @@ class ScrumPage extends StatelessWidget {
               children: List.generate(state.teamMembers.length, (index) {
                 return TeamMemberWidget(
                   name: state.teamMembers[index].name,
+                  isActive: index == 0,
                 );
               }),
             );
