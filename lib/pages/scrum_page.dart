@@ -58,12 +58,16 @@ class ScrumCenterEmptyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Theme.of(context).colorScheme.primary,
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.primary,
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Text(
-          'Please add team members',
+          'Please add a team member',
           style: Theme.of(context).textTheme.headline5,
+          textAlign: TextAlign.center,
         ),
       ),
     );

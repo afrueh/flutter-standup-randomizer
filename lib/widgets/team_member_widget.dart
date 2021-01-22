@@ -19,7 +19,7 @@ class _TeamMemberWidgetState extends State<TeamMemberWidget> {
       margin: EdgeInsets.all(5),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(
-          10,
+          30,
         ),
       ),
       color: inOffice
