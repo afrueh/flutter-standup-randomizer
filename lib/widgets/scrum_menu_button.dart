@@ -32,7 +32,7 @@ class ScrumMenuButton extends StatelessWidget {
               showDialog(
                 context: context,
                 builder: (_) => BlocProvider.value(
-                    value: context.bloc<TeamMembersBloc>(),
+                    value: context.read<TeamMembersBloc>(),
                     child: AddAlertWidget()),
               );
             }),

@@ -4,10 +4,7 @@ import 'package:standup_randomizer/models/models.dart';
 
 class TeamMembersBloc extends Bloc<TeamMembersEvent, TeamMembersState> {
   List<TeamMember> _teamMembers = [];
-  TeamMembersBloc() {}
-
-  @override
-  TeamMembersState get initialState => TeamMembersStateNotLoaded();
+  TeamMembersBloc() : super(TeamMembersStateNotLoaded());
 
   @override
   Stream<TeamMembersState> mapEventToState(TeamMembersEvent event) async* {
