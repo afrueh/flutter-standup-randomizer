@@ -23,27 +23,62 @@ class ScrumMenuButton extends StatelessWidget {
       ),
       ringColor: Theme.of(context).colorScheme.primary.withAlpha(140),
       children: <Widget>[
+        _ActionButton(
+          title: 'Add\nMember',
+          iconData: Icons.add,
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (_) => BlocProvider.value(
+                  value: context.read<TeamMembersBloc>(),
+                  child: AddAlertWidget()),
+            );
+          },
+        ),
+        _ActionButton(
+          title: 'Remove all\nMembers',
+          iconData: Icons.remove,
+          onPressed: () {
+            context.read<TeamMembersBloc>()..add(TeamMembersEventRemoveAll());
+          },
+        ),
+      ],
+    );
+  }
+}
+
+class _ActionButton extends StatelessWidget {
+  final String title;
+  final IconData iconData;
+  final VoidCallback onPressed;
+
+  _ActionButton({
+    @required this.title,
+    @required this.iconData,
+    this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final color = Theme.of(context).colorScheme.onSecondary;
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
         IconButton(
-            icon: Icon(
-              Icons.add,
-              color: Theme.of(context).colorScheme.onSecondary,
-            ),
-            onPressed: () {
-              showDialog(
-                context: context,
-                builder: (_) => BlocProvider.value(
-                    value: context.read<TeamMembersBloc>(),
-                    child: AddAlertWidget()),
-              );
-            }),
-        IconButton(
-            icon: Icon(
-              Icons.remove,
-              color: Theme.of(context).colorScheme.onSecondary,
-            ),
-            onPressed: () {
-              print('Remove');
-            })
+          icon: Icon(
+            iconData,
+            color: color,
+          ),
+          onPressed: onPressed,
+        ),
+        Text(
+          title,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: color,
+          ),
+        ),
       ],
     );
   }

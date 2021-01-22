@@ -13,6 +13,9 @@ class TeamMembersBloc extends Bloc<TeamMembersEvent, TeamMembersState> {
     } else if (event is TeamMembersEventAddMember) {
       _teamMembers.add(TeamMember(name: event.name));
       yield TeamMembersStateLoaded(teamMembers: _teamMembers);
+    } else if (event is TeamMembersEventRemoveAll) {
+      _teamMembers.clear();
+      yield TeamMembersStateLoaded(teamMembers: _teamMembers);
     }
   }
 }
