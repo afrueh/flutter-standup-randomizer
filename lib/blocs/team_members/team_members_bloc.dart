@@ -4,10 +4,7 @@ import 'package:standup_randomizer/models/models.dart';
 
 class TeamMembersBloc extends Bloc<TeamMembersEvent, TeamMembersState> {
   List<TeamMember> _teamMembers = [];
-  TeamMembersBloc() {}
-
-  @override
-  TeamMembersState get initialState => TeamMembersStateNotLoaded();
+  TeamMembersBloc() : super(TeamMembersStateNotLoaded());
 
   @override
   Stream<TeamMembersState> mapEventToState(TeamMembersEvent event) async* {
@@ -15,6 +12,12 @@ class TeamMembersBloc extends Bloc<TeamMembersEvent, TeamMembersState> {
       yield TeamMembersStateLoaded(teamMembers: _teamMembers);
     } else if (event is TeamMembersEventAddMember) {
       _teamMembers.add(TeamMember(name: event.name));
+      yield TeamMembersStateLoaded(teamMembers: _teamMembers);
+    } else if (event is TeamMembersEventRemoveAll) {
+      _teamMembers.clear();
+      yield TeamMembersStateLoaded(teamMembers: _teamMembers);
+    } else if (event is TeamMembersEventShuffleOrder) {
+      _teamMembers.shuffle();
       yield TeamMembersStateLoaded(teamMembers: _teamMembers);
     }
   }

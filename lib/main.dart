@@ -29,21 +29,93 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  TeamMembersBloc _teamMembersBloc;
+  DailyBloc _dailyBloc;
+
+  _MainPageState() {
+    _teamMembersBloc = TeamMembersBloc();
+    _dailyBloc = DailyBloc(teamMembersBloc: _teamMembersBloc);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: ((BuildContext context) {
-        return TeamMembersBloc()
-          ..add(
-            TeamMembersEventLoadData(),
-          );
-      }),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (BuildContext context) {
+          return _dailyBloc;
+        }),
+        BlocProvider(
+          create: ((BuildContext context) {
+            return _teamMembersBloc
+              ..add(
+                TeamMembersEventLoadData(),
+              );
+          }),
         ),
-        body: ScrumPage(),
-        floatingActionButton: ScrumMenuButton(),
+      ],
+      child: BlocBuilder<DailyBloc, DailyState>(
+        builder: ((context, state) {
+          return Scaffold(
+            appBar: AppBar(
+              title: Text(widget.title),
+              actions: [
+                if (state is DailyStateNotStarted)
+                  _AppBarActionButton(
+                    title: 'Start Daily',
+                    iconData: Icons.play_arrow_outlined,
+                    onPressed: () {
+                      context.read<DailyBloc>()..add(DailyEventStart());
+                    },
+                  ),
+                if (state is DailyStateStarted)
+                  _AppBarActionButton(
+                    title: 'Stop Daily',
+                    iconData: Icons.stop_circle_outlined,
+                    onPressed: () {
+                      context.read<DailyBloc>()..add(DailyEventStop());
+                    },
+                  ),
+              ],
+            ),
+            body: ScrumPage(),
+            floatingActionButton: ScrumMenuButton(),
+          );
+        }),
+      ),
+    );
+  }
+}
+
+class _AppBarActionButton extends StatelessWidget {
+  final String title;
+  final IconData iconData;
+  final VoidCallback onPressed;
+
+  _AppBarActionButton({
+    @required this.title,
+    @required this.iconData,
+    this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(10.0),
+      child: RaisedButton(
+        onPressed: onPressed,
+        child: Row(
+          children: [
+            Icon(
+              iconData,
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            SizedBox(width: 10),
+            Text(
+              title,
+              style: TextStyle(color: Theme.of(context).colorScheme.primary),
+            ),
+          ],
+        ),
       ),
     );
   }

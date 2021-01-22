@@ -114,9 +114,12 @@ class _BackgroundState extends State<Background> {
 
   Stack _loadingStack() {
     return Stack(
+      fit: StackFit.expand,
       children: <Widget>[
         Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
+            SizedBox(height: 20),
             SizedBox(
               child: CircularProgressIndicator(),
               width: 60,
@@ -124,7 +127,7 @@ class _BackgroundState extends State<Background> {
             ),
             const Padding(
               padding: EdgeInsets.only(top: 16),
-              child: Text('Awaiting result...'),
+              child: Text('Fetching background image...'),
             ),
           ],
         ),
