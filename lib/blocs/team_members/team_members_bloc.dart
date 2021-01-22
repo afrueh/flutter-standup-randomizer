@@ -16,6 +16,9 @@ class TeamMembersBloc extends Bloc<TeamMembersEvent, TeamMembersState> {
     } else if (event is TeamMembersEventRemoveAll) {
       _teamMembers.clear();
       yield TeamMembersStateLoaded(teamMembers: _teamMembers);
+    } else if (event is TeamMembersEventShuffleOrder) {
+      _teamMembers.shuffle();
+      yield TeamMembersStateLoaded(teamMembers: _teamMembers);
     }
   }
 }
